@@ -32,15 +32,15 @@ st.markdown("Each species has distinct physical characteristics, which allows th
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/5/56/Iris_setosa_2.JPG", caption="Iris Setosa", use_column_width=True)
+    st.image("https://upload.wikimedia.org/wikipedia/commons/5/56/Iris_setosa_2.JPG", caption="Iris Setosa", use_container_width=True)
     st.markdown("**Iris Setosa:** Characterized by shorter and wider petals and sepals. Generally the easiest species to separate from the other two.")
 
 with col2:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/4/41/Iris_versicolor_3.jpg", caption="Iris Versicolor", use_column_width=True)
+    st.image("https://upload.wikimedia.org/wikipedia/commons/4/41/Iris_versicolor_3.jpg", caption="Iris Versicolor", use_container_width=True)
     st.markdown("**Iris Versicolor:** Has intermediate measurements. Its petal and sepal dimensions often fall between those of Setosa and Virginica.")
 
 with col3:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/9/9f/Iris_virginica.jpg", caption="Iris Virginica", use_column_width=True)
+    st.image("https://upload.wikimedia.org/wikipedia/commons/9/9f/Iris_virginica.jpg", caption="Iris Virginica", use_container_width=True)
     st.markdown("**Iris Virginica:** Typically has the longest and widest petals and sepals among the three species.")
 
 st.markdown("""
@@ -52,9 +52,3 @@ Use the sidebar on the left to navigate the application:
 - **Classification:** Test our machine learning models! Input your own flower measurements and see the predicted species using models like Random Forest, KNN, and SVM.
 """)
 
-# Optional: Display the logo if you have it
-try:
-    st.image('logo.jpg', width=100)
-except FileNotFoundError:
-    # If the user added a logo.jpg, it will show up here.
-    pass
