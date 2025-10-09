@@ -45,6 +45,4 @@ st.markdown("""
     2.  **Iris versicolor:** This species falls between the other two in terms of feature measurements.
     3.  **Iris virginica:** This species generally has the longest petals and sepals and is often the most difficult to distinguish from *Iris versicolor* based solely on simple linear separation.
 """)
-    
-st.subheader("DuckDB Data Sample")
-st.markdown("We're using DuckDB to query the dataset loaded in-memory.")
+ 
