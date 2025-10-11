@@ -43,7 +43,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, r
 st.info(f"Training set size: {len(X_train)} samples | Test set size: {len(X_test)} samples")
 
 
-# --- Training and Evaluation ---
+# Training and Evaluation
 st.header("Training and Results")
 col_knn, col_svm = st.columns(2)
 # 1. K-Nearest Neighbors (KNN)
