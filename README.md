@@ -19,8 +19,6 @@ This project is ideal for anyone looking to learn **Python-based data analysis**
 
 
 
-# Project Structure
-
 ```
 Iris-IDEAS-TIH/
 ├── pages/
@@ -32,9 +30,6 @@ Iris-IDEAS-TIH/
 ├── iris_virginica.jpeg
 └── README.md
 ```
-
-
-
 
 ---
 
@@ -74,8 +69,6 @@ pip install -r requirements.txt
 
 ```bash
 streamlit run Home.py
-
-
 
 ---
 
