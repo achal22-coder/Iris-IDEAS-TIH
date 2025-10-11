@@ -15,15 +15,38 @@ st.set_page_config(
 
 st.title("📊 Basic Exploratory Data Analysis (EDA)")
 
+# # 1. Load the Data
+# # Using scikit-learn's built-in iris dataset for clean loading
+# @st.cache_data
+# def load_data():
+#     """Loads the Iris dataset and returns a Pandas DataFrame."""
+#     iris = load_iris(as_frame=True)
+#     df = iris.frame
+#     # Rename target column for better readability
+#     df.rename(columns={'target': 'species_id'}, inplace=True)
+#     # Map species ID to species name for EDA
+#     df['species'] = df['species_id'].map({
+#         0: 'Setosa',
+#         1: 'Versicolor',
+#         2: 'Virginica'
+#     })
+#     return df
+
+# iris_df = load_data()
+
 # 1. Load the Data
-# Using scikit-learn's built-in iris dataset for clean loading
+
 @st.cache_data
 def load_data():
-    """Loads the Iris dataset and returns a Pandas DataFrame."""
+    """Loads the Iris dataset and returns a Pandas DataFrame with cleaned columns."""
     iris = load_iris(as_frame=True)
     df = iris.frame
-    # Rename target column for better readability
+    
+    
+    df.columns = [col.replace(' (cm)', '').replace(' ', '_') for col in df.columns]
+    
     df.rename(columns={'target': 'species_id'}, inplace=True)
+    
     # Map species ID to species name for EDA
     df['species'] = df['species_id'].map({
         0: 'Setosa',
@@ -33,6 +56,8 @@ def load_data():
     return df
 
 iris_df = load_data()
+
+
 
 # 2. Display Data Snapshot
 st.header("1. Dataset Snapshot")
@@ -51,6 +76,7 @@ iris = load_iris(as_frame=True)
 df = iris.frame
 
 df['species'] = df['target'].apply(lambda x: iris.target_names[x])
+df.drop(columns=['target'], inplace=True)
 
 con = duckdb.connect(database=':memory:')
 con.register('iris_df', df)
@@ -93,16 +119,38 @@ ax_corr.set_title('Correlation Matrix of Iris Features')
 st.pyplot(fig_corr)
 import plotly.express as px
 
-# Create the Pair Plot using Plotly Express (more interactive than Seaborn for Streamlit)
-pair_fig = px.scatter_matrix(
-    iris_df,
-    dimensions=['sepal_length', 'sepal_width', 'petal_length', 'petal_width'],
-    color='species_name',
-    title='Pair Plot of Iris Features by Species'
+# 7. Scatter Matrix Plot 
+numeric_features = list(iris_df.columns[:4]) 
+
+st.header("6. Interactive Feature Pair Plots")
+
+# User selection 
+selected_feats = st.multiselect(
+    "Select features for pair plots:",
+    options=numeric_features,
+    default=numeric_features
 )
-# Adjust layout for better readability
-pair_fig.update_layout(height=800)
-st.plotly_chart(pair_fig, use_container_width=True)
 
+# Use selected features, but default to all 4 if the list is empty (can happen during app rerun)
+dims = selected_feats if len(selected_feats) >= 2 else list(iris_df.columns[:4]) 
 
+fig_scatter = px.scatter_matrix(
+    iris_df,
+    dimensions=dims,
+    # Ensure 'species' is the correct column name created in your load_data function
+    color="species",
+    title="Interactive Pairwise Relationships",
+    opacity=0.8,
+    # Set height/width for non-container use, though Streamlit will override width='stretch' or use_container_width
+    width=1200,  
+    height=900
+)
+ 
+fig_scatter.update_traces(diagonal_visible=True, marker=dict(size=6)) 
+fig_scatter.update_layout(
+    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+    margin=dict(l=40, r=20, t=60, b=40)
+) 
 
+# Ensure use_container_width is set to True to expand it across the page
+st.plotly_chart(fig_scatter, use_container_width=True)
