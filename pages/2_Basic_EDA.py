@@ -30,7 +30,7 @@ if st.button('Run Query'):
         st.write("Query Result:")
         st.dataframe(result)
     except Exception as e:
-        st.error(f"Error: {e}")
+        st.error(f"Error: {str(e)}")
 
 
 st.title("📊 Basic Exploratory Data Analysis (EDA)")
@@ -83,6 +83,7 @@ correlation_matrix = iris_df.iloc[:, :-2].corr() # Correlate only numeric featur
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', ax=ax_corr)
 ax_corr.set_title('Correlation Matrix of Iris Features')
 st.pyplot(fig_corr)
+
 
 
 
