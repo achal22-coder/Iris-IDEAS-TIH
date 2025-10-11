@@ -11,6 +11,27 @@ st.set_page_config(
     page_title="Basic EDA",
     page_icon="📊",
 )
+st.title("SQL operation on IRIS Dataset" )
+
+iris = load_iris(as_frame=True)
+df = iris.frame
+
+
+con = duckdb.connect(database=':memory:')
+con.register('iris_df', df)
+
+a=con.execute("CREATE TABLE iris AS SELECT * FROM iris_df")
+
+query = st.text_area("Enter your SQL query here:", "SELECT * FROM iris LIMIT 5")
+
+if st.button('Run Query'):
+    try:
+        result = con.execute(query).fetchdf()
+        st.write("Query Result:")
+        st.dataframe(result)
+    except Exception as e:
+        st.error(f"Error: {e}")
+
 
 st.title("📊 Basic Exploratory Data Analysis (EDA)")
 
@@ -66,7 +87,7 @@ st.dataframe(result)
 st.header("4. Feature Distribution")
 feature = st.selectbox(
     "Select a feature to visualize:",
-    iris_df.columns[:-2] # Exclude species_id and species name columns
+    iris_df.columns[0:4] # Exclude species_id and species name columns
 )
 
 fig, ax = plt.subplots()
@@ -82,4 +103,6 @@ correlation_matrix = iris_df.iloc[:, :-2].corr() # Correlate only numeric featur
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', ax=ax_corr)
 ax_corr.set_title('Correlation Matrix of Iris Features')
 st.pyplot(fig_corr)
+
+
 
