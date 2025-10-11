@@ -59,12 +59,32 @@ st.header("1. Dataset Snapshot")
 st.dataframe(iris_df.head())
 st.write(f"Dataset Shape: {iris_df.shape[0]} rows, {iris_df.shape[1]} columns")
 
+
 # 3. Display Basic Statistics
 st.header("2. Descriptive Statistics")
 st.dataframe(iris_df.describe())
 
-# 4. Simple Visualization (Histogram for a single feature)
-st.header("3. Feature Distribution")
+# 4. SQL Query on dataset
+st.title("3. SQL operation on IRIS Dataset" )
+
+iris = load_iris(as_frame=True)
+df = iris.frame
+
+df['species'] = df['target'].apply(lambda x: iris.target_names[x])
+
+con = duckdb.connect(database=':memory:')
+con.register('iris_df', df)
+
+a=con.execute("CREATE TABLE iris AS SELECT * FROM iris_df")
+
+query = st.text_area("Enter your SQL query here:", "SELECT * FROM iris LIMIT 5")
+
+result = con.execute(query).fetchdf()
+st.write("Query Result:")
+st.dataframe(result)
+
+# 5. Simple Visualization (Histogram for a single feature)
+st.header("4. Feature Distribution")
 feature = st.selectbox(
     "Select a feature to visualize:",
     iris_df.columns[0:4] # Exclude species_id and species name columns
@@ -76,8 +96,8 @@ sns.histplot(data=iris_df, x=feature, hue='species', kde=True, ax=ax)
 ax.set_title(f'Distribution of {feature}')
 st.pyplot(fig)
 
-# 5. Correlation Heatmap
-st.header("4. Feature Correlation")
+# 6. Correlation Heatmap
+st.header("5. Feature Correlation")
 fig_corr, ax_corr = plt.subplots(figsize=(8, 6))
 correlation_matrix = iris_df.iloc[:, :-2].corr() # Correlate only numeric features
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', ax=ax_corr)
