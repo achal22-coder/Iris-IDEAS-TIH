@@ -91,6 +91,18 @@ correlation_matrix = iris_df.iloc[:, :-2].corr() # Correlate only numeric featur
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', ax=ax_corr)
 ax_corr.set_title('Correlation Matrix of Iris Features')
 st.pyplot(fig_corr)
+import plotly.express as px
+
+# Create the Pair Plot using Plotly Express (more interactive than Seaborn for Streamlit)
+pair_fig = px.scatter_matrix(
+    iris_df,
+    dimensions=['sepal_length', 'sepal_width', 'petal_length', 'petal_width'],
+    color='species_name',
+    title='Pair Plot of Iris Features by Species'
+)
+# Adjust layout for better readability
+pair_fig.update_layout(height=800)
+st.plotly_chart(pair_fig, use_container_width=True)
 
 
 
