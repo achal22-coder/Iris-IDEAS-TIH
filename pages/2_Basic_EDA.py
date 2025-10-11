@@ -45,7 +45,7 @@ st.header("2. Descriptive Statistics")
 st.dataframe(iris_df.describe())
 
 # 4. SQL Query on dataset
-st.title("3. SQL operation on IRIS Dataset" )
+st.header("3. SQL operation on IRIS Dataset" )
 
 iris = load_iris(as_frame=True)
 df = iris.frame
