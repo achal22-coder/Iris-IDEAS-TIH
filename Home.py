@@ -13,14 +13,14 @@ st.title("IRIS Classification Project: An Introduction")
 st.subheader("Welcome to the Interactive Data Analysis and Classification App!")
 
 st.markdown("""
-This application explores the famous **Iris Dataset** and compares two common machine learning classification algorithms.
+This application explores the famous *Iris Dataset* and compares two common machine learning classification algorithms.
         
-It utilizes **Streamlit** for the interactive user interface, **DuckDB** for fast, analytical data processing, 
-and **Scikit-learn** for model training and evaluation.
+It utilizes *Streamlit* for the interactive user interface, *DuckDB* for fast, analytical data processing, 
+and *Scikit-learn* for model training and evaluation.
 
 The Iris dataset is a classic and widely used dataset in machine learning 
 and statistics. It contains 150 samples of Iris flowers, with 50 samples from each of 
-three species: **Iris Setosa**, **Iris Versicolor**, and **Iris Virginica**.
+three species: *Iris Setosa, **Iris Versicolor, and **Iris Virginica*.
 """)
 
 st.header("The Iris Dataset Overview")
@@ -37,8 +37,8 @@ st.subheader("Anatomy of the Iris Flower ")
 st.markdown("""
     The classification is based on four key measurements, all measured in centimeters:
 
-    * **Sepal Length/Width:** The sepal is the outer part of the flower (often green) that encloses the petals in the bud stage.
-    * **Petal Length/Width:** The petal is the colorful part of the flower that attracts pollinators.
+    * *Sepal Length/Width:* The sepal is the outer part of the flower (often green) that encloses the petals in the bud stage.
+    * *Petal Length/Width:* The petal is the colorful part of the flower that attracts pollinators.
 """)
 
 st.subheader("The Three Species")
@@ -49,15 +49,15 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     st.image("iris_setosa.webp", caption="Iris Setosa", width='stretch')
-    st.markdown("**Iris Setosa:** Characterized by shorter and wider petals and sepals. Generally the easiest species to separate from the other two.")
+    st.markdown("*Iris Setosa:* Characterized by shorter and wider petals and sepals. Generally the easiest species to separate from the other two.")
 
 with col2:
     st.image("iris_versicolor.jpeg", caption="Iris Versicolor", width='stretch')
-    st.markdown("**Iris Versicolor:** Has intermediate measurements. Its petal and sepal dimensions often fall between those of Setosa and Virginica.")
+    st.markdown("*Iris Versicolor:* Has intermediate measurements. Its petal and sepal dimensions often fall between those of Setosa and Virginica.")
 
 with col3:
     st.image("iris_virginica.jpeg", caption="Iris Virginica", width='stretch')
-    st.markdown("**Iris Virginica:** Typically has the longest and widest petals and sepals among the three species.")
+    st.markdown("*Iris Virginica:* Typically has the longest and widest petals and sepals among the three species.")
 
     
 
@@ -114,4 +114,4 @@ except Exception as e:
 # Navigation Footer 
 st.markdown("---")
 st.subheader("Ready to Explore?")
-st.markdown("Proceed to the **Basic EDA** page in the sidebar to visualize the data!")
+st.markdown("Proceed to the *Basic EDA* page in the sidebar to visualize the data!")

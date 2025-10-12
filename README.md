@@ -7,11 +7,11 @@ The application leverages the classic **Iris dataset** from the UCI Machine Lear
 ### Key Features:
 
 - **Interactive EDA**: Explore the dataset using dynamic visualizations and summary statistics to understand feature distributions and relationships.
-- **Machine Learning Classification**: Train and test different classification models such as **Support Vector Machine (SVM)**,**K-Nearest Neighbor (KNN)** and see real-time predictions for flower species.
-- **Visualization of Results**: Display model performance metrics, accuracy scores, and graphical outputs for better insights.
+- **Machine Learning Classification**: Train and test different classification models - **Support Vector Machine (SVM)**,**K-Nearest Neighbor (KNN)** and see real-time predictions for flower species.
+- **Visualization of Results**: Displayed model performance metrics, accuracy scores, and graphical outputs for better insights.
 - **User-Friendly Interface**: Streamlit provides a smooth and interactive interface, making it accessible to beginners and data science enthusiasts alike.
 
-This project is ideal for anyone looking to learn **Python-based data analysis**, **machine learning workflows**, and how to deploy a model in a **web application** format without heavy backend requirements.
+This project is ideal for anyone looking to learn **Python-based data analysis**, **machine learning workflow**, and how to deploy a model in a **web application** format without heavy backend requirements.
 
 ---
 
@@ -29,26 +29,27 @@ Iris-IDEAS-TIH/
 ├── iris_versicolor.jpeg
 ├── iris_virginica.jpeg
 └── README.md
+|__ requirements.txt
 ```
 
 ---
 
-## 🧪 Features
+## Features
 
-- 📊 **Basic EDA** — Visualize and explore the Iris dataset with interactive plots and statistics.  
-- 🤖 **Classification** — Train and evaluate machine learning models like SVM, Logistic Regression, Decision Tree, etc.  
-- 🖼️ **Image Support** — Visual representation of different Iris flower species.  
-- 🧭 **User-Friendly UI** — Built with Streamlit for an easy and interactive interface.
+- **Basic EDA** — Visualize and explore the Iris dataset with interactive plots and statistics.  
+- **Classification** — Train and evaluate machine learning models - SVM(Support Vector Machine) vs KNN(K-Nearest Neighbours)
+- **Image Support** — Visual representation of different Iris flower species.  
+- **User-Friendly UI** — Built with Streamlit for an easy and interactive interface.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/achal22-coder/Iris-IDEAS-TIH.git
 cd Iris-IDEAS-TIH
-
+```
 ### 2. Create & Activate Virtual Environment (Optional)
 
 ```bash
@@ -59,35 +60,40 @@ source venv/bin/activate
 
 ###For Windows:
 venv\Scripts\activate
+```
 
-### 3. 📦 Install Dependencies
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
+```
 
-### 4. 🚀 Run the Application
+### 4. Run the Application
 
 ```bash
 streamlit run Home.py
+```
+---
+
+## Workflow Overview
+
+1. **Home Page** – Introduction to the project and easy navigation to different modules.  
+2. **EDA Page** – Explore the dataset with interactive visualizations and summary statistics.  
+3. **Classification Page** – Train machine learning models, view predictions, and check accuracy.  
+4. **Results** – Display evaluation metrics and visual output for better insights.
 
 ---
 
-## 🧠 Workflow Overview
+## Tech Stack
 
-1. 🏠 **Home Page** – Introduction to the project and easy navigation to different modules.  
-2. 📊 **EDA Page** – Explore the dataset with interactive visualizations and summary statistics.  
-3. 🤖 **Classification Page** – Train machine learning models, view predictions, and check accuracy.  
-4. 📈 **Results** – Display evaluation metrics and visual output for better insights.
-
----
-
-## 🧰 Tech Stack
-
-- 🐍 **Language**: Python  
-- 🌐 **Framework**: Streamlit  
-- 📊 **Data Analysis**: Pandas, NumPy  
-- 🤖 **Machine Learning**: Scikit-learn  
-- 📈 **Visualization**: Matplotlib, Seaborn  
-- 🧪 **Dataset**: Iris Dataset (UCI Machine Learning Repository)
+- **Language**: Python  
+- **Framework**: Streamlit  
+- **Data Analysis**: Pandas, NumPy  
+- **Machine Learning**: Scikit-learn  
+- **Visualization**: Matplotlib, Seaborn  
+- **Dataset**: Iris Dataset (UCI Machine Learning Repository)
 
 ---
+
+
+### This project is made under supervision od Adrija Das ma'am as a part of ISI Kolkata IDEAS-TIH Autumn Internship Program.
